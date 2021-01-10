@@ -3,7 +3,7 @@
 ## Divinity Original Sin 2: Definitive Edition
 -----------------------------------------------
 
-A repository of `Lua` scripts that provide auxiliary functions for my **DOS2:DE mods**. Just `clone` or `degit` this repository.
+A repository of `Lua` scripts that provide auxiliary functions for my **DOS2:DE mods**.
 
 ### Requirements
 
