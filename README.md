@@ -7,7 +7,7 @@ A repository of `Lua` scripts that provide auxiliary functions for my **DOS2:DE 
 
 ### Requirements
 
-Most of these functions (and Lua-modding itself) requires Norbyte's ***[Script-Extender](https://github.com/Norbyte/ositools)***
+Most of these functions (and Lua-modding itself) require Norbyte's ***[Script-Extender](https://github.com/Norbyte/ositools)***
 
 ### Thanks and Credits
 * [Divinity: Original Sin 2](http://store.steampowered.com/app/435150/Divinity_Original_Sin_2/), a game by [Larian Studios](http://larian.com/)
