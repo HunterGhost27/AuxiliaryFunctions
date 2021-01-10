@@ -24,7 +24,7 @@ end
 --  ===========
 
 S7Debug = {
-    ['IDENTIFIER'] = "",
+    ['IDENTIFIER'] = IDENTIFIER,
     ['printFunction'] = Ext.Print,
     ['ignoreDevMode'] = false,
     ['highlight'] = "",
