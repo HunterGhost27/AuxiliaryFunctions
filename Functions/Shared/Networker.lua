@@ -9,7 +9,7 @@ UserInformation = {
 
 ---ReSynchronizes UserInformation Object
 function UserInformation:ReSync()
-    if Ext.IsClient() and not Ext.OsirisIsCallable() then S7Debug:Warn("Cannot ReSync UserInformation. Osiris Inaccessible") return end
+    if Ext.IsClient() and not Ext.OsirisIsCallable() then Debug:Warn("Cannot ReSync UserInformation. Osiris Inaccessible") return end
 
     --  HOST CHARACTER
     --  ==============

@@ -23,7 +23,7 @@ end
 --  DEBUG PRINT
 --  ===========
 
-S7Debug = {
+Debug = {
     ['IDENTIFIER'] = IDENTIFIER,
     ['printFunction'] = Ext.Print,
     ['ignoreDevMode'] = false,
@@ -33,7 +33,7 @@ S7Debug = {
 --- Debug Print
 ---@param t table Table of elements
 ---@param config table Configuration table
-function S7Debug:Print(t, config)
+function Debug:Print(t, config)
     local x = {}
     local config = Integrate(self, config)
     if type(t) ~= 'table' then x[1] = t else x = Rematerialize(t) end
@@ -50,13 +50,13 @@ function S7Debug:Print(t, config)
     end
 end
 
-function S7Debug:FPrint(t, config)self:Print(t, Integrate({['ignoreDevMode'] = true}, config)) end
-function S7Debug:HFPrint(t, config) self:Print(t, Integrate({['ignoreDevMode'] = true, ['highlight'] = '='}, config)) end
+function Debug:FPrint(t, config)self:Print(t, Integrate({['ignoreDevMode'] = true}, config)) end
+function Debug:HFPrint(t, config) self:Print(t, Integrate({['ignoreDevMode'] = true, ['highlight'] = '='}, config)) end
 
-function S7Debug:Warn(t, config) self:Print(t, Integrate({['printFunction'] = Ext.PrintWarning}, config)) end
-function S7Debug:FWarn(t, config) self:Print(t, Integrate({['printFunction'] = Ext.PrintWarning, ['ignoreDevMode'] = true}, config)) end
-function S7Debug:HFWarn(t, config) self:Print(t, Integrate({['printFunction'] = Ext.PrintWarning, ['ignoreDevMode'] = true, ['highlight'] = '='}, config)) end
+function Debug:Warn(t, config) self:Print(t, Integrate({['printFunction'] = Ext.PrintWarning}, config)) end
+function Debug:FWarn(t, config) self:Print(t, Integrate({['printFunction'] = Ext.PrintWarning, ['ignoreDevMode'] = true}, config)) end
+function Debug:HFWarn(t, config) self:Print(t, Integrate({['printFunction'] = Ext.PrintWarning, ['ignoreDevMode'] = true, ['highlight'] = '='}, config)) end
 
-function S7Debug:Error(t, config) self:Print(t, Integrate({['printFunction'] = Ext.PrintError}, config)) end
-function S7Debug:FError(t, config) self:Print(t, Integrate({['printFunction'] = Ext.PrintError, ['ignoreDevMode'] = true}, config)) end
-function S7Debug:HFError(t, config) self:Print(t, Integrate({['printFunction'] = Ext.PrintError, ['ignoreDevMode'] = true, ['highlight'] = '*'}, config)) end
+function Debug:Error(t, config) self:Print(t, Integrate({['printFunction'] = Ext.PrintError}, config)) end
+function Debug:FError(t, config) self:Print(t, Integrate({['printFunction'] = Ext.PrintError, ['ignoreDevMode'] = true}, config)) end
+function Debug:HFError(t, config) self:Print(t, Integrate({['printFunction'] = Ext.PrintError, ['ignoreDevMode'] = true, ['highlight'] = '*'}, config)) end

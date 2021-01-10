@@ -25,7 +25,7 @@ end
 ConsoleCommander = {}
 
 function ConsoleCommander:Register(CMD)
-    if not ValidString(CMD.Name) then S7Debug:Error('Cannot register console-command. Invalid commandName') end
+    if not ValidString(CMD.Name) then Debug:Error('Cannot register console-command. Invalid commandName') end
     self[CMD.Name] = Command:New(CMD)
 end
 
@@ -47,7 +47,7 @@ function ConsoleCommander:Help(target)
         for name, CMD in pairs(self) do if isValidContext(CMD) then helpMsg = helpMsg .. name .. "\t" .. CMD.Description .. "\n" end end
         helpMsg = helpMsg .. string.rep("=", 70) .. "\n"
     end
-    S7Debug:FWarn(helpMsg)
+    Debug:FWarn(helpMsg)
 end
 
 ConsoleCommander:Register({

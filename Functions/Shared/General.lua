@@ -1,5 +1,3 @@
-IDENTIFIER = IDENTIFIER or "<AuxFunctions>"
-
 --  ============
 --  DISINTEGRATE
 --  ============
