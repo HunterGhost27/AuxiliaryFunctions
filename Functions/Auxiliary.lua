@@ -12,17 +12,16 @@ Ext.Require('Functions/Shared/Files.lua')
 Ext.Require('Functions/Shared/Versioning.lua')
 Ext.Require('Functions/Shared/Networker.lua')
 Ext.Require('Functions/Shared/Debug.lua')
+Ext.Require('Functions/Server/ConsoleCommander.lua')
 
 --  IMPORT SERVER-SIDE
 --  ==================
 
 if Ext.IsServer() then
-    Ext.Require('Functions/Server/ConsoleCommander.lua')
 end
 
 --  IMPORT CLIENT-SIDE
 --  ==================
 
 if Ext.IsClient() then
-    
 end
