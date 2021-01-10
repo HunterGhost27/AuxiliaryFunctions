@@ -1,3 +1,8 @@
+------------------------------------
+MODINFO = Ext.GetModInfo('>>UUID<<')
+IDENTIFIER = '>>IDENTIFIER<<'
+------------------------------------
+
 --  ===================
 --  AUXILIARY FUNCTIONS
 --  ===================
@@ -12,7 +17,7 @@ Ext.Require('Functions/Shared/Files.lua')
 Ext.Require('Functions/Shared/Versioning.lua')
 Ext.Require('Functions/Shared/Networker.lua')
 Ext.Require('Functions/Shared/Debug.lua')
-Ext.Require('Functions/Server/ConsoleCommander.lua')
+Ext.Require('Functions/Shared/ConsoleCommander.lua')
 
 --  IMPORT SERVER-SIDE
 --  ==================
