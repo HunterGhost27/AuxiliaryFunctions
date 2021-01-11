@@ -60,6 +60,8 @@ function Color:Summoning(str) return addFontTags(self.summoning, str) end
 function Color:Warrior(str) return addFontTags(self.warrior, str) end
 function Color:Water(str) return addFontTags(self.water, str) end
 
+function Color:Custom(hex, str) return addFontTags(hex, str) end
+
 --  ============
 --  EXTRACT GUID
 --  ============
@@ -80,12 +82,12 @@ end
 
 Stringer = {
     ['Header'] = "",
-    ['Style'] = {
-        ['Highlight'] = false,
-        ['Outer'] = "=",
-        ['Inner'] = '-',
-    },
     ['MaxLen'] = 0,
+    ['Style'] = {
+        ['Outer'] = "=",
+        ['Under'] = "_",
+        ['Inner'] = '-',
+    }
 }
 
 function Stringer:UpdateMaxLen(str) if str:len() > self.MaxLen then self.MaxLen = str:len() end end
@@ -93,13 +95,23 @@ function Stringer:Header(str) self:UpdateMaxLen(str); self.Header = str end
 function Stringer:Add(str) self:UpdateMaxLen(str); self[#self+1] = str end
 function Stringer:Styler(t) self.Style = Integrate(self.Style, t) end
 
+function Stringer:Clear()
+    for idx, _ in ipairs(self) do self[idx] = nil end
+    self.Style = {['Outer'] = "=", ["Under"] = "_", ['Inner'] = '-'}
+    self.Header = ""
+    self.MaxLen = 0
+end
+
 function Stringer:Build()
     local str = "\n"
-    str = str .. string.rep(self.Style.Outer, self.MaxLen) .. "\n"
+    if ValidString(self.Style.Outer) then str = str .. string.rep(self.Style.Outer, self.MaxLen) .. "\n" end
     str = str .. self.Header .. "\n"
-    str = str .. string.rep(self.Style.Inner, self.MaxLen) .. "\n"
-    for idx, value in ipairs(self) do str = str .. value .. "\n"; self[idx] = nil end
-    str = str .. string.rep(self.Style.Outer, self.MaxLen) .. "\n"
-    self.MaxLen = 0
+    if ValidString(self.Style.Under) then str = str .. string.rep(self.Style.Under, self.MaxLen) .. "\n" end
+    for _, value in ipairs(self) do
+        str = str .. value .. "\n"
+        if ValidString(self.Style.Inner) then str = str .. string.rep(self.Style.Inner, self.MaxLen) .. "\n" end
+    end
+    if ValidString(self.Style.Outer) then str = str .. string.rep(self.Style.Outer, self.MaxLen) .. "\n" end
+    self:Clear()
     return str
 end
