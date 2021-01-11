@@ -59,20 +59,21 @@ function ConsoleCommanderHelp(target)
     local helpMsg = ""
 
     if ConsoleCommander[target] and isValidContext(ConsoleCommander[target]) then
-        Stringer:Header(target .. ": " .. ConsoleCommander[target].Description)
+        Stringer:SetHeader(target .. ": " .. ConsoleCommander[target].Description)
         if ConsoleCommander[target].Params then
             for key, value in ipairs(ConsoleCommander[target].Params) do
-                Stringer:Add("\n\t" .. "Parameter" .. key .. ": " .. value)
+                Stringer:Add("\t" .. "Parameter" .. key .. ": " .. value)
             end
         end
         helpMsg = Stringer:Build()
     else
         for name, CMD in pairs(ConsoleCommander) do
             if type(CMD) == 'table' and isValidContext(CMD) then
-                Stringer:Add("COMMAND: ".. name .. "\nDESCRIPTION: " .. CMD.Description .. "\n")
+                Stringer:Add("COMMAND: ".. name)
+                Stringer:Add("DESCRIPTION: " .. CMD.Description)
             end
         end
-        Stringer:Add("!S7_Forgetinator Help <CommandName> for more info\n")
+        Stringer:Add("!S7_Forgetinator Help <CommandName> for more info")
         helpMsg = Stringer:Build()
     end
     Debug:FWarn(helpMsg)

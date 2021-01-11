@@ -91,7 +91,7 @@ Stringer = {
 }
 
 function Stringer:UpdateMaxLen(str) if str:len() > self.MaxLen then self.MaxLen = str:len() end end
-function Stringer:Header(str) self:UpdateMaxLen(str); self.Header = str end
+function Stringer:SetHeader(str) self:UpdateMaxLen(str); self.Header = str end
 function Stringer:Add(str) self:UpdateMaxLen(str); self[#self+1] = str end
 function Stringer:Styler(t) self.Style = Integrate(self.Style, t) end
 
