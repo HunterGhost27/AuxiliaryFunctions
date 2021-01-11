@@ -1,3 +1,18 @@
+--  ========
+--  INDEX OF
+--  ========
+
+---Returns the index of value in target table
+---@param val any Value in Question
+---@param tar table Target Table
+---@return any key Index of Value
+function IndexOf(val, tar)
+    if type(tar) ~= 'table' then return end
+    for key, value in pairs(tar) do
+        if val == value then return key end
+    end
+end
+
 --  ===================
 --  DESTRINGIFY NUMBERS
 --  ===================
@@ -52,7 +67,7 @@ function Destructure(tar, t)
     if type(t) ~= 'table' then return end
     local temp = {}
     for idx, key in Spairs(t) do
-        if type(tar[key]) == 'table' then Destructure(tar[key], t) end
+        if type(tar[key]) == 'table' then temp[idx] = Destructure(tar[key], t) end
         if tar[key] then temp[idx] = tar[key] end
     end
     return table.unpack(temp)
