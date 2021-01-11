@@ -73,3 +73,33 @@ function ExtractGUID(str)
     local _, _, extractName, extractGUID = str:find("(.*)_(.-)$")
     return extractGUID, extractName
 end
+
+--  ==============
+--  STRING BUILDER
+--  ==============
+
+Stringer = {
+    ['Header'] = "",
+    ['Style'] = {
+        ['Highlight'] = false,
+        ['Outer'] = "=",
+        ['Inner'] = '-',
+    },
+    ['MaxLen'] = 0,
+}
+
+function Stringer:UpdateMaxLen(str) if str:len() > self.MaxLen then self.MaxLen = str:len() end end
+function Stringer:Header(str) self:UpdateMaxLen(str); self.Header = str end
+function Stringer:Add(str) self:UpdateMaxLen(str); self[#self+1] = str end
+function Stringer:Styler(t) self.Style = Integrate(self.Style, t) end
+
+function Stringer:Build()
+    local str = "\n"
+    str = str .. string.rep(self.Style.Outer, self.MaxLen) .. "\n"
+    str = str .. self.Header .. "\n"
+    str = str .. string.rep(self.Style.Inner, self.MaxLen) .. "\n"
+    for idx, value in ipairs(self) do str = str .. value .. "\n"; self[idx] = nil end
+    str = str .. string.rep(self.Style.Outer, self.MaxLen) .. "\n"
+    self.MaxLen = 0
+    return str
+end
