@@ -71,6 +71,7 @@ function ConsoleCommanderHelp(target)
             if type(CMD) == 'table' and isValidContext(CMD) then
                 Stringer:Add("COMMAND: ".. name)
                 Stringer:Add("DESCRIPTION: " .. CMD.Description)
+                Stringer:LineBreak("-")
             end
         end
         Stringer:Add("!S7_Forgetinator Help <CommandName> for more info")

@@ -85,19 +85,19 @@ Stringer = {
     ['MaxLen'] = 0,
     ['Style'] = {
         ['Outer'] = "=",
-        ['Under'] = "_",
         ['Inner'] = '-',
     }
 }
 
 function Stringer:UpdateMaxLen(str) if str:len() > self.MaxLen then self.MaxLen = str:len() end end
 function Stringer:SetHeader(str) self:UpdateMaxLen(str); self.Header = str end
-function Stringer:Add(str) self:UpdateMaxLen(str); self[#self+1] = str end
 function Stringer:Styler(t) self.Style = Integrate(self.Style, t) end
+function Stringer:Add(str) self:UpdateMaxLen(str); self[#self+1] = str end
+function Stringer:LineBreak(char) self:Add(string.rep(char, self.MaxLen)) end
 
 function Stringer:Clear()
     for idx, _ in ipairs(self) do self[idx] = nil end
-    self.Style = {['Outer'] = "=", ["Under"] = "_", ['Inner'] = '-'}
+    self.Style = {['Outer'] = "=", ["Inner"] = "-"}
     self.Header = ""
     self.MaxLen = 0
 end
@@ -106,11 +106,8 @@ function Stringer:Build()
     local str = "\n"
     if ValidString(self.Style.Outer) then str = str .. string.rep(self.Style.Outer, self.MaxLen) .. "\n" end
     str = str .. self.Header .. "\n"
-    if ValidString(self.Style.Under) then str = str .. string.rep(self.Style.Under, self.MaxLen) .. "\n" end
-    for _, value in ipairs(self) do
-        str = str .. value .. "\n"
-        if ValidString(self.Style.Inner) then str = str .. string.rep(self.Style.Inner, self.MaxLen) .. "\n" end
-    end
+    if ValidString(self.Style.Inner) then str = str .. string.rep(self.Style.Inner, self.MaxLen) .. "\n" end
+    for _, value in ipairs(self) do str = str .. value .. "\n" end
     if ValidString(self.Style.Outer) then str = str .. string.rep(self.Style.Outer, self.MaxLen) .. "\n" end
     self:Clear()
     return str
