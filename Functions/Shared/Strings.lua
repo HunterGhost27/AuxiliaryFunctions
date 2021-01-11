@@ -59,3 +59,17 @@ function Color:Source(str) return addFontTags(self.source, str) end
 function Color:Summoning(str) return addFontTags(self.summoning, str) end
 function Color:Warrior(str) return addFontTags(self.warrior, str) end
 function Color:Water(str) return addFontTags(self.water, str) end
+
+--  ============
+--  EXTRACT GUID
+--  ============
+
+---Extract GUID and Name parts from NameGUID
+---@param str string GUIDString
+---@return string extractGUID
+---@return string extractName
+function ExtractGUID(str)
+    if type(str) ~= 'string' then return end
+    local _, _, extractName, extractGUID = str:find("(.*)_(.-)$")
+    return extractGUID, extractName
+end
