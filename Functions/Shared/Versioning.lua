@@ -2,6 +2,8 @@
 --  VERSION
 --  =======
 
+MODINFO.ModVersion = "0.0.0.0"
+
 ---@class Version
 Version = {
     [1] = 0,---@type number Major
