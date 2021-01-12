@@ -1,0 +1,7 @@
+[{
+    "action": "remove",
+    "files": [
+        "LICENSE",
+        "README"
+    ]
+}]
