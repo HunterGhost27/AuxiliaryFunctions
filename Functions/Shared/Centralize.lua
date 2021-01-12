@@ -3,7 +3,7 @@
 --  ==========
 
 CENTRAL = {}
-CENTRAL.Template = {
+CENTRAL[IDENTIFIER] = {
     ["Author"] = MODINFO.Author,
     ["Name"] = MODINFO.Name,
     ["UUID"] = MODINFO.UUID,
@@ -12,8 +12,8 @@ CENTRAL.Template = {
     ["ModSettings"] = {}
 }
 
-function CENTRAL:Load() self = LoadFile('S7Central.json') or {} end
-function CENTRAL:Sync() self[IDENTIFIER] = Intersection(self.Template, MODINFO) end
+function CENTRAL:Load() self = Integrate(self, LoadFile('S7Central.json')) end
+function CENTRAL:Sync() self[IDENTIFIER] = Intersection(self[IDENTIFIER], MODINFO) end
 function CENTRAL:Save() SaveFile('S7Central.json', Rematerialize(self)) end
 
 function CENTRAL:ReSync()

@@ -28,7 +28,7 @@ function Spairs(t, order)
     local keys = {}
     if type(order) == 'string' then order = string.lower(order) end
 
-    for k, _ in pairs(t) do keys[#keys + 1] = k end
+    for k, _ in pairs(t) do if type(k) == 'number' then keys[#keys + 1] = k end end
     if order == "ascending" then table.sort(keys, function(a, b) return tonumber(a) < tonumber(b) end)
     elseif order == "descending" then table.sort(keys, function(a, b) return tonumber(a) > tonumber(b) end)
     elseif type(order) == 'function' then table.sort(keys, function(a, b) return order(t, a, b) end)
