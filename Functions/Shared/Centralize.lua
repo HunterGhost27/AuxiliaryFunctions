@@ -12,9 +12,9 @@ CENTRAL.Template = {
     ["ModSettings"] = {}
 }
 
-function CENTRAL:Load() CENTRAL = LoadFile('S7Central.json') or {} end
-function CENTRAL:Sync() CENTRAL[IDENTIFIER] = Intersection(CENTRAL.Template, MODINFO) end
-function CENTRAL:Save() SaveFile('S7Central.json', CENTRAL) end
+function CENTRAL:Load() self = LoadFile('S7Central.json') or {} end
+function CENTRAL:Sync() self[IDENTIFIER] = Intersection(self.Template, MODINFO) end
+function CENTRAL:Save() SaveFile('S7Central.json', Rematerialize(self)) end
 
 function CENTRAL:ReSync()
     self:Load()
