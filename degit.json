@@ -2,6 +2,8 @@
     "action": "remove",
     "files": [
         "LICENSE",
-        "README"
+        "README.md",
+        "CHANGELOG.md",
+        ".github/"
     ]
 }]
