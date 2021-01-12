@@ -4,6 +4,7 @@
         "LICENSE",
         "README.md",
         "CHANGELOG.md",
-        ".github/"
+        ".github/",
+        ".gitignore"
     ]
 }]
