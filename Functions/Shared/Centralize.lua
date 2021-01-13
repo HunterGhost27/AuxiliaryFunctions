@@ -9,11 +9,22 @@ CENTRAL[IDENTIFIER] = {
     ["UUID"] = MODINFO.UUID,
     ["Version"] = MODINFO.Version,
     ["ModVersion"] = "0.0.0.0",
-    ["ModSettings"] = {}
+    ["ModSettings"] = {},
 }
 
-function CENTRAL:Load() self = Integrate(self, LoadFile('S7Central.json')) end
-function CENTRAL:Sync() self[IDENTIFIER] = Intersection(self[IDENTIFIER], MODINFO) end
+function CENTRAL:Load()
+    self = Integrate(self, LoadFile('S7Central.json'))
+    Settings:Write(self.ModSettings)
+end
+
+function CENTRAL:Sync()
+    for key, _ in pairs(self[IDENTIFIER]) do
+        if IsValid(MODINFO[key]) then
+            self[IDENTIFIER][key] = Rematerialize(MODINFO[key])
+        end
+    end
+end
+
 function CENTRAL:Save() SaveFile('S7Central.json', Rematerialize(self)) end
 
 function CENTRAL:ReSync()
