@@ -86,6 +86,9 @@ end
 --  STRING BUILDER
 --  ==============
 
+---@class Stringer @Builds Multiline Strings
+---@field Header string Highlighted header
+---@field Maxlen number Largest line-length
 Stringer = {
     ['Header'] = "",
     ['MaxLen'] = 0,
@@ -95,12 +98,31 @@ Stringer = {
     }
 }
 
+---Updates MaxLength
+---@param str string
 function Stringer:UpdateMaxLen(str) if str:len() > self.MaxLen then self.MaxLen = str:len() end end
+
+---Sets the Header
+---@param str string
 function Stringer:SetHeader(str) self:UpdateMaxLen(str); self.Header = str end
+
+---Sets Style options
+---@param t table<string, string>
 function Stringer:Styler(t) self.Style = Integrate(self.Style, t) end
-function Stringer:Add(str) self:UpdateMaxLen(str); self[#self+1] = str end
+
+---Adds new line
+---@param str string
+function Stringer:Add(str) self:UpdateMaxLen(str); self[#self + 1] = str end
+
+---Appends string to the last element
+---@param str string
+function Stringer:Append(str) self[#self] = self[#self] .. str; self:UpdateMaxLen(self[#self]) end
+
+---Adds a line-break
+---@param char string
 function Stringer:LineBreak(char) self:Add(string.rep(char, self.MaxLen)) end
 
+---Resets Stringer to default values
 function Stringer:Clear()
     for idx, _ in ipairs(self) do self[idx] = nil end
     self.Style = {['Outer'] = "=", ["Inner"] = "-"}
@@ -108,6 +130,8 @@ function Stringer:Clear()
     self.MaxLen = 0
 end
 
+---Combines the entire Stringer object into a single string
+---@return string displayString
 function Stringer:Build()
     local str = "\n"
     if ValidString(self.Style.Outer) then str = str .. string.rep(self.Style.Outer, self.MaxLen) .. "\n" end
