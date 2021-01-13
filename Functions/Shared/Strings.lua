@@ -11,63 +11,6 @@ function ValidString(str)
     return true
 end
 
---  ======
---  COLORS
---  ======
-
-Color = {
-    ["black"] = "#000000",
-    ["red"] = "#E03616",
-    ["blue"] = "#5998C5",
-    ["green"] = "#3F784C",
-    ["yellow"] = "#FFFF00",
-    ["orange"] = "#C17817",
-    ["violet"] = "#58355E",
-    ["gold"] = "#C7A758",
-    ["white"] = "#FFFFFF",
-    ["air"] = "#7478DC",
-    ["earth"] = "#AA895B",
-    ["fire"] = "#C76537",
-    ["necromancy"] = "#9A5085",
-    ["polymorph"] = "#FFB811",
-    ["ranger"] = "#5A9646",
-    ["rogue"] = "#566C6C",
-    ["source"] = "#6EB09D",
-    ["summoning"] = "#9440B3",
-    ["warrior"] = "#A11919",
-    ["water"] = "#579CCA",
-}
-
----Wrap font tags around string with corresponding color
----@param color string Hex-Color-Value
----@param str string
----@return string
-local function addFontTags(color, str) return "<font color=\'" .. color .. "\'>" .. tostring(str) .. "</font>" end
-
-function Color:Red(str) return addFontTags(self.red, str) end
-function Color:Blue(str) return addFontTags(self.blue, str) end
-function Color:Green(str) return addFontTags(self.green, str) end
-function Color:Black(str) return addFontTags(self.black, str) end
-function Color:White(str) return addFontTags(self.white, str) end
-function Color:Yellow(str) return addFontTags(self.yellow, str) end
-function Color:Orange(str) return addFontTags(self.orange, str) end
-function Color:Violet(str) return addFontTags(self.violet, str) end
-function Color:Gold(str) return addFontTags(self.gold, str) end
-
-function Color:Air(str) return addFontTags(self.air, str) end
-function Color:Earth(str) return addFontTags(self.earth, str) end
-function Color:Fire(str) return addFontTags(self.fire, str) end
-function Color:Necromancy(str) return addFontTags(self.necromancy, str) end
-function Color:Polymorph(str) return addFontTags(self.polymorph, str) end
-function Color:Ranger(str) return addFontTags(self.ranger, str) end
-function Color:Rogue(str) return addFontTags(self.rogue, str) end
-function Color:Source(str) return addFontTags(self.source, str) end
-function Color:Summoning(str) return addFontTags(self.summoning, str) end
-function Color:Warrior(str) return addFontTags(self.warrior, str) end
-function Color:Water(str) return addFontTags(self.water, str) end
-
-function Color:Custom(hex, str) return addFontTags(hex, str) end
-
 --  ============
 --  EXTRACT GUID
 --  ============
@@ -142,3 +85,148 @@ function Stringer:Build()
     self:Clear()
     return str
 end
+
+--  ======
+--  COLORS
+--  ======
+
+Color = {
+    ["black"] = "#000000",
+    ["red"] = "#E03616",
+    ["blue"] = "#5998C5",
+    ["green"] = "#3F784C",
+    ["yellow"] = "#FFFF00",
+    ["orange"] = "#C17817",
+    ["violet"] = "#58355E",
+    ["gold"] = "#C7A758",
+    ["white"] = "#FFFFFF",
+    ["air"] = "#7478DC",
+    ["earth"] = "#AA895B",
+    ["fire"] = "#C76537",
+    ["necromancy"] = "#9A5085",
+    ["polymorph"] = "#FFB811",
+    ["ranger"] = "#5A9646",
+    ["rogue"] = "#566C6C",
+    ["source"] = "#6EB09D",
+    ["summoning"] = "#9440B3",
+    ["warrior"] = "#A11919",
+    ["water"] = "#579CCA",
+}
+
+---Wrap font tags around string with corresponding color
+---@param color string Hex-Color-Value
+---@param str string
+---@return string
+local function addFontTags(color, str) return "<font color=\'" .. color .. "\'>" .. tostring(str) .. "</font>" end
+
+---Color the string Red
+---@param str string
+---@return string
+function Color:Red(str) return addFontTags(self.red, str) end
+
+---Color the string Blue
+---@param str string
+---@return string
+function Color:Blue(str) return addFontTags(self.blue, str) end
+
+---Color the string Green
+---@param str string
+---@return string
+function Color:Green(str) return addFontTags(self.green, str) end
+
+---Color the string Black
+---@param str string
+---@return string
+function Color:Black(str) return addFontTags(self.black, str) end
+
+---Color the string White
+---@param str string
+---@return string
+function Color:White(str) return addFontTags(self.white, str) end
+
+---Color the string Yellow
+---@param str string
+---@return string
+function Color:Yellow(str) return addFontTags(self.yellow, str) end
+
+---Color the string Orange
+---@param str string
+---@return string
+function Color:Orange(str) return addFontTags(self.orange, str) end
+
+---Color the string Violet
+---@param str string
+---@return string
+function Color:Violet(str) return addFontTags(self.violet, str) end
+
+---Color the string Gold
+---@param str string
+---@return string
+function Color:Gold(str) return addFontTags(self.gold, str) end
+
+--  ELEMENTAL COLORS
+--  ================
+
+---Color the string Air
+---@param str string
+---@return string
+function Color:Air(str) return addFontTags(self.air, str) end
+
+---Color the string Earth
+---@param str string
+---@return string
+function Color:Earth(str) return addFontTags(self.earth, str) end
+
+---Color the string Fire
+---@param str string
+---@return string
+function Color:Fire(str) return addFontTags(self.fire, str) end
+
+---Color the string Necromancy
+---@param str string
+---@return string
+function Color:Necromancy(str) return addFontTags(self.necromancy, str) end
+
+---Color the string Polymorph
+---@param str string
+---@return string
+function Color:Polymorph(str) return addFontTags(self.polymorph, str) end
+
+---Color the string Ranger
+---@param str string
+---@return string
+function Color:Ranger(str) return addFontTags(self.ranger, str) end
+
+---Color the string Rogue
+---@param str string
+---@return string
+function Color:Rogue(str) return addFontTags(self.rogue, str) end
+
+---Color the string Source
+---@param str string
+---@return string
+function Color:Source(str) return addFontTags(self.source, str) end
+
+---Color the string Summoning
+---@param str string
+---@return string
+function Color:Summoning(str) return addFontTags(self.summoning, str) end
+
+---Color the string Warrior
+---@param str string
+---@return string
+function Color:Warrior(str) return addFontTags(self.warrior, str) end
+
+---Color the string Water
+---@param str string
+---@return string
+function Color:Water(str) return addFontTags(self.water, str) end
+
+--  CUSTOM COLOR
+--  ============
+
+---Color the string with custom Hex-Value
+---@param hex string Color Hex-Value
+---@param str string String to color
+---@return string
+function Color:Custom(hex, str) return addFontTags(hex, str) end
