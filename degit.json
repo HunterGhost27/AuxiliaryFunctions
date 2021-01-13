@@ -5,6 +5,7 @@
         "README.md",
         "CHANGELOG.md",
         ".github/",
-        ".gitignore"
+        ".gitignore",
+        "AuxFunctions.code-workspace"
     ]
 }]
