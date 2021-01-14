@@ -24,7 +24,7 @@ Ext.Require('Functions/Shared/ConsoleCommander.lua')
 --  ---------------
 
 if Ext.IsServer() then
-    Ext.Require('Functions/Shared/DialogManager.lua')
+    Ext.Require('Functions/Server/DialogManager.lua')
 end
 
 --  CLIENT-SPECIFIC
