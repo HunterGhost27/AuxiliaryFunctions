@@ -1,3 +1,13 @@
+--  ===============
+--  MOD INFORMATION
+--  ===============
+
+---@class MODINFO: ModInfo
+---@field ModVersion string
+---@field ModSettings table
+MODINFO = Ext.GetModInfo(MODUUID)
+
+
 --  ===================
 --  AUXILIARY FUNCTIONS
 --  ===================

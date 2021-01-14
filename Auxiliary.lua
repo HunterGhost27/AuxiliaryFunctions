@@ -2,14 +2,8 @@
 --==============================================================
 
 IDENTIFIER = '>>IDENTIFIER<<'
-
----@class MODINFO: ModInfo
----@field ModVersion string
----@field ModSettings table
-MODINFO = Ext.GetModInfo('>>UUID<<')
-
+MODUUID = '>>UUID<<'
 DefaultSettings = {}
-
 PersistentVars = {}
 
 --  ========  AUX FUNCTIONS  =========
