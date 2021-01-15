@@ -12,6 +12,28 @@ function ExtractKeys(t)
     return keys
 end
 
+--  =========
+--  INTEGRATE
+--  =========
+
+--- Merge source and target. Existing source elements have priority.
+---@param target table
+---@param source table
+---@return table source
+function Integrate(target, source)
+    local source = source or {}
+    for key, value in pairs(target) do
+        if type(value) == "table" then
+            if not source[key] then source[key] = {} end
+            source[key] = Integrate(value, source[key])
+        elseif type(value) == "boolean" and source[key] == false then source[key] = false
+        elseif type(value) == "string" and not ValidString(value) then source[key] = source[key]
+        else source[key] = source[key] or value end
+    end
+    return source
+end
+
+
 --  ===================
 --  DESTRINGIFY NUMBERS
 --  ===================
