@@ -4,7 +4,7 @@
 
 ---Extracts a list of keys from a table
 ---@param t table
----@return table keys Array of keys
+---@return string[] keys Array of keys
 function ExtractKeys(t)
     if type(t) ~= 'table' then return end
     local keys = {}
@@ -32,7 +32,6 @@ function Integrate(target, source)
     end
     return source
 end
-
 
 --  ===================
 --  DESTRINGIFY NUMBERS
