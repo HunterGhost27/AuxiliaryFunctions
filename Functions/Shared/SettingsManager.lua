@@ -2,17 +2,11 @@
 --  SETTINGS MANAGER
 --  ================
 
----@class Settings @Mod-Settings
 SettingsFile = File:New({['Name'] = MODINFO.SubdirPrefix .. IDENTIFIER .. "Settings.json"})
 DefaultSettings = DefaultSettings or {}
 SettingsFile.Contents = Integrate(DefaultSettings, MODINFO.ModSettings)
+---@class Settings @Mod-Settings
 Settings = SettingsFile.Contents
-
----Loads CENTRAL file and Updates settings
-function Settings:Load()
-    CENTRAL:Load()
-    self:Update(CENTRAL[IDENTIFIER].ModSettings)
-end
 
 ---Updates settings on a case-by-case basis
 ---@param parent Settings

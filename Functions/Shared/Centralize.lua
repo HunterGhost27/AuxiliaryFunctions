@@ -5,11 +5,11 @@
 ---@class CENTRAL @Holds information about mods
 CENTRAL = {}
 CENTRAL[IDENTIFIER] = {
-    ["Author"] = MODINFO.Author,
-    ["Name"] = MODINFO.Name,
-    ["UUID"] = MODINFO.UUID,
-    ["Version"] = MODINFO.Version,
-    ["ModVersion"] = MODINFO.ModVersion or "0.0.0.0"
+    ["Author"] = Rematerialize(MODINFO.Author),
+    ["Name"] = Rematerialize(MODINFO.Name),
+    ["UUID"] = Rematerialize(MODINFO.UUID),
+    ["Version"] = Rematerialize(MODINFO.Version),
+    ["ModVersion"] = Rematerialize(MODINFO.ModVersion) or "0.0.0.0"
 }
 
 ---Loads `S7Central.json` and updates information
@@ -20,7 +20,7 @@ function CENTRAL:Load()
 end
 
 ---Synchronizes CENTRAL information and MODINFO
-function CENTRAL:Sync() for key, _ in pairs(self[IDENTIFIER]) do if IsValid(MODINFO[key]) then self[IDENTIFIER][key] = MODINFO[key] end end end
+function CENTRAL:Sync() for key, _ in pairs(self[IDENTIFIER]) do if IsValid(MODINFO[key]) then self[IDENTIFIER][key] = Rematerialize(MODINFO[key]) end end end
 
 ---Saves CENTRAL information in `S7Central.json`
 function CENTRAL:Save() SaveFile('S7Central.json', Rematerialize(self)) end
