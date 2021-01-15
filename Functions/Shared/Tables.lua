@@ -22,6 +22,8 @@ end
 ---@return table source
 function Integrate(target, source)
     local source = source or {}
+    if type(target) ~= "table" then source[#source + 1] = target; return source end
+
     for key, value in pairs(target) do
         if type(value) == "table" then
             if not source[key] then source[key] = {} end
