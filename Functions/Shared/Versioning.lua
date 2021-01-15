@@ -28,6 +28,7 @@ function Version:Parse(version)
     elseif type(version) == "table" then versionTable = version
     elseif type(version) == "number" then
         local major, minor, revision, build = 0, 0, 0, 0
+        --- Thanks to LaughingLeader. I have no idea what this is.
         version = math.tointeger(version)
         major = math.floor(version >> 28)
         minor = math.floor(version >> 24) & 0x0F
