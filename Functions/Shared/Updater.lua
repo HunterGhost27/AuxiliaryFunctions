@@ -47,7 +47,7 @@ end
 --  INITIAL CHECK
 --  =============
 
-CENTRAL = CENTRAL:Load() -- Loads CENTRAL file
+CENTRAL:Load() -- Loads CENTRAL file
 local prevVersion = Version:Parse(CENTRAL[IDENTIFIER]["ModVersion"]) -- Reads previous version
 local currVersion = Version:Parse(MODINFO.Version) -- Reads current version
 Update:Check(prevVersion, currVersion) -- Performs update check
