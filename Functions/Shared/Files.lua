@@ -102,5 +102,5 @@ end
 function File:Save(fileName, contents)
     local fileName = fileName or self.Name
     local contents = contents or self.Contents
-    SaveFile(fileName, contents)
+    SaveFile(fileName, Rematerialize(contents))
 end

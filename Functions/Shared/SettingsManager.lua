@@ -9,7 +9,7 @@ Settings = Integrate(DefaultSettings, MODINFO.ModSettings)
 
 ---Loads CENTRAL file and Updates settings
 function Settings:Load()
-    CENTRAL = CENTRAL:Load()
+    CENTRAL:Load()
     self:Update(CENTRAL[IDENTIFIER].ModSettings)
 end
 

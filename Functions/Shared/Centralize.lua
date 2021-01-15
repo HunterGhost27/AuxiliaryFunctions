@@ -20,7 +20,7 @@ CENTRAL[IDENTIFIER] = {
 function CENTRAL:Load()
     local file = LoadFile(CENTRALFILE) or {}
     self = Integrate(self, file)
-    if Settings then Settings:Update(CENTRAL[IDENTIFIER].ModSettings) end
+    if Settings then Settings:Update(self[IDENTIFIER].ModSettings) end
     return self
 end
 
@@ -31,4 +31,4 @@ function CENTRAL:Sync() for key, _ in pairs(self[IDENTIFIER]) do if IsValid(MODI
 function CENTRAL:Save() SaveFile(CENTRALFILE, Rematerialize(self)) end
 
 ---Loads, Syncs and Saves CENTRAL
-function CENTRAL:ReSync() self = self:Load(); self:Sync(); self:Save() end
+function CENTRAL:ReSync() self:Load(); self:Sync(); self:Save() end
