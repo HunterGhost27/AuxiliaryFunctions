@@ -3,9 +3,10 @@
 --  ================
 
 ---@class Settings @Mod-Settings
-Settings = {}
+SettingsFile = File:New({['Name'] = MODINFO.SubdirPrefix .. IDENTIFIER .. "Settings.json"})
 DefaultSettings = DefaultSettings or {}
-Settings = Integrate(DefaultSettings, MODINFO.ModSettings)
+SettingsFile.Contents = Integrate(DefaultSettings, MODINFO.ModSettings)
+Settings = SettingsFile.Contents
 
 ---Loads CENTRAL file and Updates settings
 function Settings:Load()
