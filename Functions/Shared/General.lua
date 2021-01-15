@@ -21,12 +21,12 @@ end
 
 ---Disintegrate element into pieces
 ---@param element string|table
----@param separator string String separator. Default: `" "`
+---@param separator string String separator. Default: `"%s"`
 function Disintegrate(element, separator)
     if type(element) ~= 'string' and type(element) ~= 'table' then return end
 
     local pieces = {}
-    local separator = separator or " "
+    local separator = separator or "%s"
     if type(element) == 'table' then pieces = element end
     if type(element) == 'string' then for split in string.gmatch(element, "[^" .. separator .. "]+") do pieces[#pieces + 1] = split end end
     return table.unpack(pieces)
