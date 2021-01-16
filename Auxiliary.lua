@@ -8,8 +8,7 @@ IDENTIFIER = '>>IDENTIFIER<<'
 ---@field ModSettings table
 ---@field SubdirPrefix string
 MODINFO = Ext.GetModInfo('>>UUID<<')
-
-DefaultSettings = {}
+MODINFO.DefaultSettings = {}
 
 PersistentVars = {}
 
