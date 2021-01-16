@@ -3,8 +3,8 @@
 --  ================
 
 SettingsFile = File:New({['Name'] = MODINFO.SubdirPrefix .. IDENTIFIER .. "Settings.json"})
-DefaultSettings = DefaultSettings or {}
-SettingsFile.Contents = Integrate(DefaultSettings, MODINFO.ModSettings)
+MODINFO.DefaultSettings = MODINFO.DefaultSettings or {}
+SettingsFile.Contents = Integrate(MODINFO.DefaultSettings, MODINFO.ModSettings)
 ---@class Settings @Mod-Settings
 Settings = SettingsFile.Contents
 
@@ -26,18 +26,21 @@ end
 ---@param settings Settings
 function Settings:Update(settings)
     local settings = settings or {}
-    updateSetting(self, settings, DefaultSettings)
+    updateSetting(self, settings, MODINFO.DefaultSettings)
     self:Sync()
 end
 
----Synchronizes Settings with MODINFO.ModSettings and PersistentVars.Settings
+function Settings:Load()
+    SettingsFile:Load()
+end
+
+---Synchronizes Settings with MODINFO.ModSettings
 function Settings:Sync() MODINFO.ModSettings = self end
 
 ---Saves Settings in CENTRAL file
 function Settings:Save()
    self:Sync()
-   CENTRAL:Sync()
-   CENTRAL:Save()
+   SettingsFile:Save()
 end
 
 --  ============================================================================================

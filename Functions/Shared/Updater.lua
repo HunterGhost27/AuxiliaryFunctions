@@ -42,15 +42,3 @@ function Update:Update(oldVersion, newVersion)
     self.isRequired = false
     self.force = false
 end
-
---  =============
---  INITIAL CHECK
---  =============
-
-CENTRAL:Load() -- Loads CENTRAL file
-local prevVersion = Version:Parse(CENTRAL[IDENTIFIER]["ModVersion"]) -- Reads previous version
-local currVersion = Version:Parse(MODINFO.Version) -- Reads current version
-Update:Check(prevVersion, currVersion) -- Performs update check
-MODINFO.ModVersion = currVersion:String() -- Updates CENTRAL mod-version
-CENTRAL:Sync() -- Synchronizes CENTRAL file
-CENTRAL:Save() -- Saves CENTRAL file
