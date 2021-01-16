@@ -2,11 +2,16 @@
 --  SETTINGS MANAGER
 --  ================
 
-SettingsFile = File:New({['Name'] = MODINFO.SubdirPrefix .. IDENTIFIER .. "Settings.json"})
-MODINFO.DefaultSettings = MODINFO.DefaultSettings or {}
-SettingsFile.Contents = Integrate(MODINFO.DefaultSettings, MODINFO.ModSettings)
 ---@class Settings @Mod-Settings
-Settings = SettingsFile.Contents
+Settings = {}
+DefaultSettings = DefaultSettings or {}
+Settings = Integrate(DefaultSettings, MODINFO.ModSettings)
+
+---Loads CENTRAL file and Updates settings
+function Settings:Load()
+    CENTRAL = CENTRAL:Load()
+    self:Update(CENTRAL[IDENTIFIER].ModSettings)
+end
 
 ---Updates settings on a case-by-case basis
 ---@param parent Settings
@@ -26,21 +31,18 @@ end
 ---@param settings Settings
 function Settings:Update(settings)
     local settings = settings or {}
-    updateSetting(self, settings, MODINFO.DefaultSettings)
+    updateSetting(self, settings, DefaultSettings)
     self:Sync()
 end
 
-function Settings:Load()
-    SettingsFile:Load()
-end
-
----Synchronizes Settings with MODINFO.ModSettings
+---Synchronizes Settings with MODINFO.ModSettings and PersistentVars.Settings
 function Settings:Sync() MODINFO.ModSettings = self end
 
 ---Saves Settings in CENTRAL file
 function Settings:Save()
    self:Sync()
-   SettingsFile:Save()
+   CENTRAL:Sync()
+   CENTRAL:Save()
 end
 
 --  ============================================================================================

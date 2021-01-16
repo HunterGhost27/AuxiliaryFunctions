@@ -71,14 +71,12 @@ function Stringer:LineBreak(char) self:Add(string.rep(char, self.MaxLen)) end
 function Stringer:Tabulate(t)
     if type(t) ~= 'table' then return end
     local t = Rematerialize(t) or {}
-
-    local maxLen = 0
     local keys = ExtractKeys(t)
+    local maxLen = 0
     for _, key in pairs(keys) do
         local len = string.len(tostring(key))
         if len > maxLen then maxLen = len end
     end
-
     local displayStr = "\n"
     for key, value in pairs(t) do
         key = tostring(key)

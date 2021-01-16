@@ -9,12 +9,8 @@
 
 ---@class Dialog
 ---@field Name string DialogName
----@field inSession boolean Dialog underway
 ---@field Vars table<string, DialogVar> DialogVariables
-Dialog = {
-    ['Name'] = "",
-    ['inSession'] = false,
-}
+Dialog = {}
 
 ---Instantiate new Dialog object. Must specify `DialogName`.
 ---@param object table
