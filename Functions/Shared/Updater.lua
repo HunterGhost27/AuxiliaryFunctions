@@ -58,6 +58,6 @@ local prevVersion = Version:Parse(CENTRAL[IDENTIFIER]["ModVersion"]) -- Reads pr
 local currVersion = Version:Parse(MODINFO.Version) -- Reads current version
 Update:Check(prevVersion, currVersion) -- Performs update check
 MODINFO.ModVersion = currVersion:String() -- Updates CENTRAL mod-version
-MODINFO.ModSettings = CENTRAL[IDENTIFIER].ModSettings
+MODINFO.ModSettings = Integrate(MODINFO.DefaultSettings, CENTRAL[IDENTIFIER].ModSettings)
 CENTRALIZE() -- Synchronizes CENTRAL file
 SaveFile(CENTRALFILE, Rematerialize(CENTRAL))
