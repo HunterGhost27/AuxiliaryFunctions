@@ -9,11 +9,10 @@ IDENTIFIER = '>>IDENTIFIER<<'
 ---@field DefaultSettings table
 ---@field SubdirPrefix string
 MODINFO = Ext.GetModInfo('>>UUID<<')
-MODINFO.DefaultSettings = {}
 
---  ========  AUX FUNCTIONS  =========
-Ext.Require("Functions/Auxiliary.lua")
---  ==================================
+--  ========  AUX FUNCTIONS  ========
+Ext.Require("AuxFunctions/Index.lua")
+--  =================================
 
 --==============================================================
 ----------------------------------------------------------------
