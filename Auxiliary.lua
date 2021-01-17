@@ -11,8 +11,6 @@ IDENTIFIER = '>>IDENTIFIER<<'
 MODINFO = Ext.GetModInfo('>>UUID<<')
 MODINFO.DefaultSettings = {}
 
-PersistentVars = {}
-
 --  ========  AUX FUNCTIONS  =========
 Ext.Require("Functions/Auxiliary.lua")
 --  ==================================
