@@ -4,9 +4,9 @@ const degit = require('degit');
 //  CONFIG
 //  ======
 
-const repository = 'HunterGhost27/AuxiliaryFunctions/'
+const repository = 'HunterGhost27/AuxiliaryFunctions'
 const config = require('./fetcherConfig.json')
-const projectFolder = config.ProjectFolder || config.IDENTIFIER + '_' + config.UUID
+const projectFolder = config.ProjectDetails.ProjectFolder || `${config.ProjectDetails.IDENTIFIER}_${config.ProjectDetails.UUID}`
 
 //  =============
 //  AUX-FUNCTIONS
@@ -15,32 +15,16 @@ const projectFolder = config.ProjectFolder || config.IDENTIFIER + '_' + config.U
 //  AuxFunctions
 //  ============
 
-const auxFunctions = degit(repository + 'AuxFunctions', {
-    cache: true,
-    force: true,
-    verbose: true,
+const auxFunctions = degit(`${repository}`, {
+    cache: config.Settings.cache || true,
+    force: config.Settings.force || true,
+    verbose: config.Settings.verbose || true,
 })
 
 auxFunctions.on('info', info => {
     console.log(info.message)
 })
 
-auxFunctions.clone('Mods/' + projectFolder + '/Story/RawFiles/Lua/AuxFunctions').then(() => {
-    console.log('Imported AuxFunctions to Lua-Folder');
-})
-
-//  Auxiliary.lua
-//  =============
-
-const aux = degit(repository + 'Auxiliary.lua', {
-    cache: true,
-    verbose: true
-})
-
-aux.on('info', info => {
-    console.log(info.message)
-})
-
-aux.clone('Mods/' + projectFolder + '/Story/RawFiles/Lua/Auxiliary.lua').then(() => {
-    console.log('Imported Auxiliary.lua to Lua-Folder')
+auxFunctions.clone(`Mods/${projectFolder}`).then(() => {
+    console.log('Imported AuxFunctions');
 })

@@ -1,5 +1,12 @@
 {
-    "IDENTIFIER": "S7_Config",
-    "UUID": "de8f15f2-65a2-4ee4-a25f-7a7ab0305a58",
-    "ProjectFolder": "S7_Config_de8f15f2-65a2-4ee4-a25f-7a7ab0305a58"
+    "Settings": {
+        "cache": true,
+        "force": false,
+        "verbose": true
+    },
+    "ProjectDetails": {
+        "IDENTIFIER": "S7_Config",
+        "UUID": "de8f15f2-65a2-4ee4-a25f-7a7ab0305a58",
+        "ProjectFolder": "S7_Config_de8f15f2-65a2-4ee4-a25f-7a7ab0305a58"
+    }
 }
