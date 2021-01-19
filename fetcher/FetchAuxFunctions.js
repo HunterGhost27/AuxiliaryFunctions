@@ -1,3 +1,7 @@
+//  ===================
+//  IMPORT NODE MODULES
+//  ===================
+
 const degit = require('degit');
 
 //  ======
@@ -5,14 +9,14 @@ const degit = require('degit');
 //  ======
 
 const repository = 'HunterGhost27/AuxiliaryFunctions'
-const config = require('./fetcherConfig.json')
-const projectFolder = config.ProjectDetails.ProjectFolder || `${config.ProjectDetails.IDENTIFIER}_${config.ProjectDetails.UUID}`
-config.Settings = {
-    cache: false,
-    force: false,
-    verbose: false,
-    ...config.Settings
-}
+
+const {
+    projectFolder,
+    Validator,
+    config
+} = require('./config')
+
+Validator(config)
 
 //  =============
 //  AUX-FUNCTIONS
