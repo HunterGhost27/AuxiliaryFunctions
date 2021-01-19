@@ -1,6 +1,6 @@
---  ==============
---  DYNAMIC DIALOG
---  ==============
+--  ====================================
+--  DYNAMIC DIALOG (HIGHLY EXPERIMENTAL)
+--  ====================================
 
 ---@class DialogNode
 ---@field Text string Dialog text
@@ -54,7 +54,6 @@ DynamicDialog:AddListeners({
         DynamicDialog.State.level = DynamicDialog.State.level + 1
         DynamicDialog.Stage = DynamicDialog.Nodes[DynamicDialog.State.level][DynamicDialog.State.selected]
         DynamicDialog.State.page = 1
-        Ext.Print(Ext.JsonStringify(Rematerialize(DynamicDialog.State)))
     end,
     ['S7_DynamicDialog_GoBack'] = function ()
         if DynamicDialog.State.level <= 1 then return end
@@ -64,7 +63,6 @@ DynamicDialog:AddListeners({
         DynamicDialog.State.history[#DynamicDialog.State.history] = nil
         DynamicDialog.Stage = DynamicDialog.Nodes[DynamicDialog.State.level][DynamicDialog.State.selected]
         DynamicDialog.State.page = 1
-        Ext.Print(Ext.JsonStringify(Rematerialize(DynamicDialog.State)))
     end,
 })
 DynamicDialog:RegisterListeners()
@@ -122,93 +120,15 @@ end
 ---Overrides base Dialog:Start
 ---@param character string|nil CharacterGUID
 function DynamicDialog:Start(character)
-    if self.Active then return end
+    if self.isActive then return end
     local character = character or Osi.CharacterGetHostCharacter()
     if not Ext.OsirisIsCallable() then return end
     if not Osi.QRY_SpeakerIsAvailable(character) then return end
     self.Stage = self.Nodes[self.State.level]['DIALOGSTART']
     self:Set()
-    Osi.Proc_StartDialog(1, self.Name, character)
+    Osi.Proc_StartDialog(self.isAutomated, self.Name, character)
 end
 
 ---Update Nodes
 ---@param nodes DialogNode[]
 function DynamicDialog:UpdateNodes(nodes) self.Nodes = nodes end
-
--- =====
--- TESTS
--- =====
-
---  ============
---  DYNAMIC MENU
---  ============
-
-DynamicDialog.Nodes = {
-    [1] = {
-        ['DialogResponse'] = "Select a Skill",
-        ['DIALOGSTART'] = {
-            [1] = {['Text'] = "Projectile_Fireball"},
-            [2] = {['Text'] = "Projectile_PyroclasticRock"},
-            [3] = {['Text'] = "Shout_Fortify"},
-            [4] = {['Text'] = "Shout_ShedSkin"},
-            [5] = {['Text'] = "Shout_InspireStart"},
-            [6] = {['Text'] = "Target_S7_Config_Inspect"},
-            [7] = {['Text'] = "Cone_Flamebreath"}
-        }
-    },
-    [2] = {
-        ['DialogResponse'] = "Select an Attribute",
-        ['Projectile_Fireball'] = {
-            [1] = {['Text'] = "ActionPoints"},
-            [2] = {['Text'] = "Cooldown"},
-            [3] = {['Text'] = "MemoryCost"}
-        },
-        ['Shout_ShedSkin'] = {
-            [1] = {['Text'] = "Magic Cost"},
-            [2] = {['Text'] = "ActionPoints"}
-        },
-        ['Target_S7_Config_Inspect'] = {
-            [1] = {['Text'] = "ActionPoints"}
-        },
-        ['Shout_InspireStart'] = {
-            [1] = {['Text'] = "ActionPoints"},
-            [2] = {['Text'] = "Cooldown"}
-        },
-        ['Cone_Flamebreath'] = {
-            [1] = {['Text'] = "ActionPoints"},
-            [2] = {['Text'] = "Cooldown"}
-        },
-        ['Projectile_PyroclasticRock'] = {
-            [1] = {['Text'] = "ActionPoints"},
-            [2] = {['Text'] = "Cooldown"}
-        },
-        ['Shout_Fortify'] = {
-            [1] = {['Text'] = "ActionPoints"},
-            [2] = {['Text'] = "Cooldown"}
-        }
-    },
-    [3] = {
-        ['DialogResponse'] = "Select an Action",
-        ['ActionPoints'] = {
-            [1] = {['Text'] = "Increase"},
-            [2] = {['Text'] = "Decrease"},
-            [3] = {['Text'] = "Set"},
-            [4] = {['Text'] = "Reset"},
-            [5] = {['Text'] = "Confirm"}
-        },
-        ['Cooldown'] = {
-            [1] = {['Text'] = "Increase"},
-            [2] = {['Text'] = "Decrease"},
-            [3] = {['Text'] = "Set"},
-            [4] = {['Text'] = "Reset"},
-            [5] = {['Text'] = "Confirm"}
-        },
-        ['MemoryCost'] = {
-            [1] = {['Text'] = "Increase"},
-            [2] = {['Text'] = "Decrease"},
-            [3] = {['Text'] = "Set"},
-            [4] = {['Text'] = "Reset"},
-            [5] = {['Text'] = "Confirm"}
-        },
-    }
-}
