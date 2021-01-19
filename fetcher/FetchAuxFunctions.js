@@ -18,7 +18,7 @@ Validator(config)
 //  AUX-FUNCTIONS
 //  =============
 
-const auxFunctions = degit(`${repository}`, config.Settings)
+const auxFunctions = degit(repository, config.Settings)
 auxFunctions.on('info', info => console.log(info.message))
 auxFunctions.clone(`Mods/${projectFolder}`)
     .then(() => console.log('Imported AuxFunctions'))
@@ -36,7 +36,7 @@ let osiToolsConfig = {
         "Lua"
     ],
 }
-if (fs.existsSync(`Mods/${projectFolder}/OsiToolsConfig.json`)) {
+if (fs.existsSync(`./Mods/${projectFolder}/OsiToolsConfig.json`)) {
     const existingOsiToolsConfig = require(`./Mods/${projectFolder}/OsiToolsConfig.json`)
     console.log('Existing OsiToolsConfig.json')
     osiToolsConfig = {
