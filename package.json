@@ -1,0 +1,19 @@
+{
+  "name": "auxiliaryfunctions",
+  "version": "1.0.0",
+  "description": "Imports AuxFunctions from HunterGhost27/AuxiliaryFunctions",
+  "main": "FetchAuxFunctions.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HunterGhost27/AuxiliaryFunctions.git"
+  },
+  "author": "HunterGhost27",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HunterGhost27/AuxiliaryFunctions/issues"
+  },
+  "homepage": "https://github.com/HunterGhost27/AuxiliaryFunctions#readme"
+}
