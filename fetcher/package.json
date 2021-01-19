@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/HunterGhost27/AuxiliaryFunctions/issues"
   },
-  "homepage": "https://github.com/HunterGhost27/AuxiliaryFunctions#readme"
+  "homepage": "https://github.com/HunterGhost27/AuxiliaryFunctions#readme",
+  "dependencies": {
+    "degit": "^2.8.0"
+  }
 }
