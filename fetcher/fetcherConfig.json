@@ -1,6 +1,6 @@
 {
     "Settings": {
-        "cache": true,
+        "cache": false,
         "force": false,
         "verbose": true
     },
