@@ -7,6 +7,7 @@
     "ProjectDetails": {
         "IDENTIFIER": "S7_AuxiliaryFunctions",
         "UUID": "de7f15f2-6572-4ee4-a27f-7a7ab0305a78",
+        "ScriptExtenderVersion": 52,
         "ProjectFolder": "S7_AuxiliaryFunctions_de7f15f2-6572-4ee4-a27f-7a7ab0305a78"
     }
 }
