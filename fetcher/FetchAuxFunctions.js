@@ -25,7 +25,7 @@ auxFunctions.on('info', info => {
     console.log(info.message)
 })
 
-auxFunctions.clone('Mods/' + projectFolder + '/Story/RawFiles/Lua/').then(() => {
+auxFunctions.clone('Mods/' + projectFolder + '/Story/RawFiles/Lua/AuxFunctions').then(() => {
     console.log('Imported AuxFunctions to Lua-Folder');
 })
 
@@ -41,6 +41,6 @@ aux.on('info', info => {
     console.log(info.message)
 })
 
-aux.clone('Mods/' + projectFolder + 'Story/RawFiles/Lua/').then(() => {
+aux.clone('Mods/' + projectFolder + '/Story/RawFiles/Lua/Auxiliary.lua').then(() => {
     console.log('Imported Auxiliary.lua to Lua-Folder')
 })
