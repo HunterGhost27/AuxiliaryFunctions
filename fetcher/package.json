@@ -4,7 +4,7 @@
   "description": "Imports AuxFunctions from HunterGhost27/AuxiliaryFunctions",
   "main": "FetchAuxFunctions.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node FetchAuxFunctions.js"
   },
   "repository": {
     "type": "git",
