@@ -11,7 +11,7 @@ IDENTIFIER = '>>IDENTIFIER<<'
 MODINFO = Ext.GetModInfo('>>UUID<<')
 
 --  ========  AUX FUNCTIONS  ========
-Ext.Require("AuxFunctions/Index.lua")
+Ext.Require('AuxFunctions/Index.lua')
 --  =================================
 
 --==============================================================
