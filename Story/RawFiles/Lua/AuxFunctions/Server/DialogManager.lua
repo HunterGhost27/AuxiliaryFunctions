@@ -57,7 +57,7 @@ function Dialog:AddListeners(actions) self.Relay = Integrate(self.Relay, actions
 ---Register DialogFlag Listeners
 function Dialog:RegisterListeners()
     Ext.RegisterOsirisListener('DialogStarted', 2, 'after', function (dialogName, instanceID) self.isActive = true; self.instanceID = instanceID end)
-    Ext.RegisterOsirisListener('DialogEnded', 2, 'after', function (dialogName, instanceID) self.isActive = true; self.instanceID = nil end)
+    Ext.RegisterOsirisListener('DialogEnded', 2, 'after', function (dialogName, instanceID) self.isActive = false; self.instanceID = nil end)
     Ext.RegisterOsirisListener('GlobalFlagSet', 1, 'after', function (signal)
         if not self.Relay[signal] then return end
         UserInformation:ReSync()
