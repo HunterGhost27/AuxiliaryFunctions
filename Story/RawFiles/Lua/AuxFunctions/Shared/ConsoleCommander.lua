@@ -61,18 +61,18 @@ function ConsoleCommanderHelp(target)
         Write:SetHeader(target .. ": " .. ConsoleCommander[target].Description)
         if ConsoleCommander[target].Params then
             for key, value in ipairs(ConsoleCommander[target].Params) do
-                Write:Add("\t" .. "Parameter" .. key .. ": " .. value)
+                Write:NewLine("\t" .. "Parameter" .. key .. ": " .. value)
             end
         end
-        helpMsg = Write:Build()
+        helpMsg = Write:Display()
     else
         local helpTable = {}
         for cmdName, value in pairs(Rematerialize(ConsoleCommander)) do helpTable[cmdName] = value.Description end
 
         Write:SetHeader('COMMAND\t\t\tDESCRIPTION')
         Write:Tabulate(helpTable)
-        Write:Add("!" .. IDENTIFIER .." Help <CommandName> for more info")
-        helpMsg = Write:Build()
+        Write:NewLine("!" .. IDENTIFIER .." Help <CommandName> for more info")
+        helpMsg = Write:Display()
     end
     Debug:FWarn(helpMsg)
 end

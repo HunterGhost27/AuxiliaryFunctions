@@ -68,15 +68,15 @@ function Write:Styler(t) self.Style = Integrate(self.Style, t) end
 
 ---Adds new line
 ---@param str string
-function Write:Add(str) self:UpdateMaxLen(str); self[#self + 1] = str end
+function Write:NewLine(str) self:UpdateMaxLen(str); self[#self + 1] = str end
 
 ---Appends string to the last element
 ---@param str string
-function Write:Append(str) if self[#self] then self[#self] = self[#self] .. str else self[#self+1] = str end end
+function Write:AppendLine(str) if self[#self] then self[#self] = self[#self] .. str else self[#self + 1] = str end end
 
 ---Adds a line-break
 ---@param char string
-function Write:LineBreak(char) self:Add(string.rep(char, self.MaxLen)) end
+function Write:LineBreak(char) local char = char or ""; self:NewLine(string.rep(char, self.MaxLen)) end
 
 ---Creates a 2D string table
 ---@param t table
@@ -95,11 +95,11 @@ function Write:Tabulate(t)
         key = tostring(key)
         local keyLen = string.len(key)
         if keyLen < maxLen then key = key .. string.rep(" ", maxLen - keyLen) end
-        local str = key .. "\t\t" .. tostring(value) .. "\n"
+        local str = key .. "\t" .. tostring(value) .. "\n"
         self:UpdateMaxLen(str)
         displayStr = displayStr .. str
     end
-    self:Append(displayStr)
+    self:AppendLine(displayStr)
 end
 
 
@@ -113,7 +113,7 @@ end
 
 ---Combines the entire Stringer object into a single string
 ---@return string displayString
-function Write:Build()
+function Write:Display()
     local str = "\n"
     if ValidString(self.Style.Outer) then str = str .. string.rep(self.Style.Outer, self.MaxLen) .. "\n" end
     str = str .. self.Header .. "\n"
