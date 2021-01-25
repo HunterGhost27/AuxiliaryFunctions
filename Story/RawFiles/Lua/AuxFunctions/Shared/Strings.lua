@@ -2,13 +2,25 @@
 --  VALIDATE NON-EMPTY STRING
 --  =========================
 
---- Check validity of string.
+--- Check validity of string
 ---@param str any
 function ValidString(str)
     if type(str) ~= 'string' then return false end
     if str == "" or str == "{}" or str == "[]" then return false end
     if str == "00000000-0000-0000-0000-000000000000" or str == "NULL_00000000-0000-0000-0000-000000000000" then return false end
     return true
+end
+
+--  ==========
+--  READ LINES
+--  ==========
+
+---Line iterator
+---@param str string
+---@return string lineIterator
+function Readlines(str)
+    if str:sub(-1) ~= '\n' then str = str .. '\n' end
+    return str:gmatch('(.-)\n')
 end
 
 --  ============
@@ -21,7 +33,7 @@ end
 ---@return string extractName
 function ExtractGUID(str)
     if type(str) ~= 'string' then return end
-    local _, _, extractName, extractGUID = str:find("(.*)_(.-)$")
+    local extractName, extractGUID = str:match("(.*)_(.-)$")
     return extractGUID, extractName
 end
 
@@ -29,7 +41,7 @@ end
 --  STRING BUILDER
 --  ==============
 
----@class Stringer @Builds Multiline Strings
+---@class Stringer @Builds multiline strings
 ---@field Header string Highlighted header
 ---@field Maxlen number Largest line-length
 ---@field Style table Styles
