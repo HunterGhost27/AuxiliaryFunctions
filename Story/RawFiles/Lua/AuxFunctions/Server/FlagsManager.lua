@@ -59,11 +59,11 @@ end
 
 ---Prints information about all tracked flags
 function Flags:StatusReport()
-    Stringer:SetHeader("Flags:")
+    Write:SetHeader("Flags:")
     for flagName, flag in pairs(self) do
-        if type(flag) == 'table' then Stringer:Add(flagName .. "(" .. flag.flagType .. "): " .. tostring(flag.boolState)) end
+        if type(flag) == 'table' then Write:Add(flagName .. "(" .. flag.flagType .. "): " .. tostring(flag.boolState)) end
     end
-    Debug:Print(Stringer:Build())
+    Debug:Print(Write:Build())
 end
 
 if Ext.IsDeveloperMode() then

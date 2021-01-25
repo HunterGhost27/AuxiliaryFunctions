@@ -37,15 +37,15 @@ function ExtractGUID(str)
     return extractGUID, extractName
 end
 
---  ==============
---  STRING BUILDER
---  ==============
+--  ======
+--  WRITER
+--  ======
 
----@class Stringer @Builds multiline strings
+---@class Write @Writes multiline strings
 ---@field Header string Highlighted header
 ---@field Maxlen number Largest line-length
 ---@field Style table Styles
-Stringer = {
+Write = {
     ['Header'] = "",
     ['MaxLen'] = 0,
     ['Style'] = {
@@ -56,32 +56,32 @@ Stringer = {
 
 ---Updates MaxLength
 ---@param str string
-function Stringer:UpdateMaxLen(str) if str:len() > self.MaxLen then self.MaxLen = str:len() end end
+function Write:UpdateMaxLen(str) if str:len() > self.MaxLen then self.MaxLen = str:len() end end
 
 ---Sets the Header
 ---@param str string
-function Stringer:SetHeader(str) self:UpdateMaxLen(str); self.Header = str end
+function Write:SetHeader(str) self:UpdateMaxLen(str); self.Header = str end
 
 ---Sets Style options
 ---@param t table<string, string>
-function Stringer:Styler(t) self.Style = Integrate(self.Style, t) end
+function Write:Styler(t) self.Style = Integrate(self.Style, t) end
 
 ---Adds new line
 ---@param str string
-function Stringer:Add(str) self:UpdateMaxLen(str); self[#self + 1] = str end
+function Write:Add(str) self:UpdateMaxLen(str); self[#self + 1] = str end
 
 ---Appends string to the last element
 ---@param str string
-function Stringer:Append(str) if self[#self] then self[#self] = self[#self] .. str else self[#self+1] = str end end
+function Write:Append(str) if self[#self] then self[#self] = self[#self] .. str else self[#self+1] = str end end
 
 ---Adds a line-break
 ---@param char string
-function Stringer:LineBreak(char) self:Add(string.rep(char, self.MaxLen)) end
+function Write:LineBreak(char) self:Add(string.rep(char, self.MaxLen)) end
 
 ---Creates a 2D string table
 ---@param t table
 ---@return string
-function Stringer:Tabulate(t)
+function Write:Tabulate(t)
     if type(t) ~= 'table' then return end
     local t = Rematerialize(t) or {}
     local keys = ExtractKeys(t)
@@ -104,7 +104,7 @@ end
 
 
 ---Resets Stringer to default values
-function Stringer:Clear()
+function Write:Clear()
     for idx, _ in ipairs(self) do self[idx] = nil end
     self.Style = {['Outer'] = "=", ["Inner"] = "-"}
     self.Header = ""
@@ -113,7 +113,7 @@ end
 
 ---Combines the entire Stringer object into a single string
 ---@return string displayString
-function Stringer:Build()
+function Write:Build()
     local str = "\n"
     if ValidString(self.Style.Outer) then str = str .. string.rep(self.Style.Outer, self.MaxLen) .. "\n" end
     str = str .. self.Header .. "\n"
