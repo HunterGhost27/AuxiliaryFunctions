@@ -2,5 +2,4 @@
 #   GITIGNORE
 #   #########
 
-node_modules/
 *.code-workspace
