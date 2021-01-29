@@ -11,5 +11,4 @@ Most of these functions (and Lua-modding itself) require Norbyte's ***[Script-Ex
 
 ### Thanks and Credits
 * [Divinity: Original Sin 2](http://store.steampowered.com/app/435150/Divinity_Original_Sin_2/), a game by [Larian Studios](http://larian.com/)
-* **Norbyte**, for the **script-extender**
-* **Sebastian Lenz** and **LaughingLeader** for the **[VSCode extension](https://marketplace.visualstudio.com/items?itemName=sebastian-lenz.divinity-vscode)**
+* **Norbyte**, for the divine **script-extender**
