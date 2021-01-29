@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help improve the mod
+about: Create a report to help improve the project
 title: "[BUG]: "
 labels: 'bug'
 assignees: Shresht7
