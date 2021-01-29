@@ -1,12 +1,13 @@
-[{
+[
+  {
     "action": "remove",
     "files": [
-        "LICENSE",
-        "README.md",
-        "CHANGELOG.md",
-        ".github/",
-        "fetcher/",
-        ".gitignore",
-        "AuxFunctions.code-workspace"
+      "LICENSE",
+      "README.md",
+      "CHANGELOG.md",
+      ".github/",
+      ".gitignore",
+      "AuxFunctions.code-workspace"
     ]
-}]
+  }
+]
