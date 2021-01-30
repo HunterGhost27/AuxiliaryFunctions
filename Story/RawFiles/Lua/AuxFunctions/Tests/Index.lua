@@ -2,4 +2,4 @@
 --  UNIT TESTS
 --  ==========
 
-Ext.Require('AuxiliaryFunctions/Tests/General_Test.lua')
+Ext.Require('AuxFunctions/Tests/General_Test.lua')

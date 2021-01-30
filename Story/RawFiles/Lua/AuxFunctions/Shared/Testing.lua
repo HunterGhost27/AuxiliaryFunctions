@@ -39,7 +39,8 @@ function Test:It(spec)
         )
     )
     local status = table.remove(results, 1)
-    if not IsEqual(results, spec.expectation) then status = false end
+    results['n'] = nil
+    if not IsEqual(results, spec.expectation) then status = false; table.insert(self.Failures, spec.description) end
     if status then table.insert(self.Successes, spec.description) end
 end
 
@@ -47,9 +48,10 @@ end
 function Test:Results()
     Write:SetHeader(self.Name)
     Write:NewLine('Failures: ')
-    Write:NewLine(table.concat(self.Failures))
+    Write:NewLine(table.concat(self.Failures), "\n")
     Write:LineBreak(' ')
     Write:NewLine('Success: ')
-    Write:NewLine(table.concat(self.Successes))
+    Write:NewLine(table.concat(self.Successes), "\n")
+    Debug:HFWarn(Write:Display())
 end
 
