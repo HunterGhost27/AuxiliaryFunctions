@@ -2,9 +2,8 @@
 name: Feature request
 about: Suggest an idea for this project
 title: "[FEATURE]: "
-labels: 'enhancement'
+labels: "enhancement"
 assignees: Shresht7
-
 ---
 
 **Please describe your idea and how it will add to the project's experience**

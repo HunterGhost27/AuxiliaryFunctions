@@ -2,9 +2,8 @@
 name: Bug report
 about: Create a report to help improve the project
 title: "[BUG]: "
-labels: 'bug'
+labels: "bug"
 assignees: Shresht7
-
 ---
 
 **Describe the bug**
