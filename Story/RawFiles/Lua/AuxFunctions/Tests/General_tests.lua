@@ -46,7 +46,7 @@ GeneralTest:It({
     ['expectation'] = {false}
 })
 
-GeneralTest:Results()
+GeneralTest:ShowResults()
 
 --  ============
 --  DISINTEGRATE
@@ -106,3 +106,5 @@ GeneralTest:It({
     ['params'] = {5.62},
     ['expectation'] = {5, 0.62}
 })
+
+GeneralTest:ShowResults()

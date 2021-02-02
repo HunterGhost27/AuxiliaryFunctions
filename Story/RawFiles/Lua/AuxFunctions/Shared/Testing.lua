@@ -42,13 +42,17 @@ function Test:It(spec)
 end
 
 ---Displays Test Results
-function Test:Results()
-    local results = Ext.LoadFile('S7TestResults.yaml') or {}
-    Write:NewLine("Test Results for Suite - " .. self.Name .. ":")
+function Test:ShowResults()
+    local results = {}
+    local md = Ext.LoadFile('S7TestResults.md') or ""
+    local header = "\n\nTest Results for Suite " .. self.Name .. ":"
+    table.insert(results, header)
+    Debug:HFPrint(header)
     for desc, success in pairs(self.Results) do
-        Write:NewLine(success .. ": " .. desc)
+        local testSpec = success .. ": " .. desc
+        table.insert(results, testSpec)
+        if success == '[PASS]' then Debug:FPrint(testSpec) else Debug:FError(testSpec) end
     end
-    local testResults = results .. "\n" .. Write:Display()
-    Debug:HFWarn(testResults)
-    Ext.SaveFile('S7TestResults.yaml', testResults)
+    local testResults = md .. "\n" .. table.concat(results, "\n")
+    Ext.SaveFile('S7TestResults.md', testResults)
 end
