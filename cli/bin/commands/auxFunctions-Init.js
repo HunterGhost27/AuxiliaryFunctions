@@ -3,7 +3,6 @@
 //  =======
 
 const fs = require("fs"); //  File-System Module
-const degit = require("degit"); //  Degit files from GitHub Repository
 
 const {
   auxConfigPath,
@@ -12,6 +11,7 @@ const {
 } = require("../../utils/auxConfig");
 
 const CreateOsiToolsConfig = require("../../utils/osiToolsConfig");
+const DegitAuxFunctions = require("../../utils/degitRepo");
 
 //  ==========
 //  INITIALIZE
@@ -25,6 +25,7 @@ async function Init(options) {
 
   //  SCAFFOLD PROJECT
   CreateOsiToolsConfig(AuxConfig);
+  DegitAuxFunctions(AuxConfig);
 
   //  SAVE AUXCONFIG
   fs.writeFileSync(auxConfigPath, JSON.stringify(AuxConfig, null, 2), "utf8");
