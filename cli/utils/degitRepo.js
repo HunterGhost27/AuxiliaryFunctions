@@ -55,7 +55,7 @@ Ext.Require('AuxFunctions/Index.lua')
 const DegitAuxFunctions = (AuxConfig, options) => {
   //  Initialize Degit
   const lua = degit(
-    `${repo}/Story/RawFiles/Lua/AuxFunctions`,
+    `${repo}/Mods/Story/RawFiles/Lua/AuxFunctions`,
     DegitOptions(options)
   );
 

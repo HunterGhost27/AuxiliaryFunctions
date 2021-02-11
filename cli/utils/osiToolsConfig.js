@@ -1,5 +1,4 @@
-//  Import File-System Module
-const fs = require("fs");
+const fs = require("fs"); //  Import File-System Module
 
 //  Create OsiToolsConfig.json
 const CreateOsiToolsConfig = (AuxConfig) => {
@@ -9,9 +8,10 @@ const CreateOsiToolsConfig = (AuxConfig) => {
     FeatureFlags: AuxConfig.SEFeatureFlags,
   };
 
-  const target = `./Mods/${AuxConfig.ProjectDirectory}`;
-  fs.mkdirSync(target, { recursive: true });
+  const target = `./Mods/${AuxConfig.ProjectDirectory}`; //  Target directory
+  fs.mkdirSync(target, { recursive: true }); //  Create target directory if it doesn't exist
 
+  //  Write OsiToolsConfig.json
   fs.writeFile(
     `${target}/OsiToolsConfig.json`,
     JSON.stringify(osiToolsConfig, null, 2),
@@ -19,4 +19,6 @@ const CreateOsiToolsConfig = (AuxConfig) => {
   );
 };
 
+//  ===========  EXPORT  =============
 module.exports = CreateOsiToolsConfig;
+//  ==================================
