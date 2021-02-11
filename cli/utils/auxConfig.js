@@ -67,7 +67,14 @@ const PromptForMissingProperties = async (AuxConfig) => {
     questions.push({
       type: "checkbox",
       name: "SEFeatureFlags",
-      choices: ["OsirisExtensions", "Lua", "Preprocessor"],
+      choices: [
+        "OsirisExtensions",
+        "Lua",
+        "Preprocessor",
+        "DisableFolding",
+        "CustomStats",
+        "CustomStatsPane",
+      ],
       default: ["OsirisExtensions", "Lua"],
     });
   }

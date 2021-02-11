@@ -5,24 +5,27 @@
 //  IMPORTS
 //  =======
 
-require = require("esm")(module /*, options */);
-const app = require("../package.json");
+const { version } = require("../package.json");
 const program = require("commander");
 
+//  ========
 //  COMMANDS
 //  ========
 
 const Init = require("./commands/auxFunctions-Init");
 
-//  ============
-//  MAIN COMMAND
-//  ============
+program.name("AuxFunctions").version(version);
 
-program.name("AuxFunctions").version(app.version);
+//  AUXFUNCTION INIT
+//  ================
 
 program
   .command("Init")
   .description("Initialize AuxFunctions")
+  .option("-r, --reinit", "Reinitialize AuxConfig")
   .action((options) => Init(options));
+
+//  PARSE ARGUMENTS
+//  ===============
 
 program.parse();

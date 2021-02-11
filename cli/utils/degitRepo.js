@@ -64,16 +64,11 @@ const DegitAuxFunctions = (AuxConfig, options) => {
   fs.mkdirSync(target, { recursive: true });
 
   //  Degit Repository
-  lua
-    .clone(`${target}/AuxFunctions/`)
-    .then(() =>
-      console.log(`Cloned ${repo}#master into ${target}/AuxFunctions/`)
-    )
-    .catch((err) => {
-      if (err.code === "DEST_NOT_EMPTY") {
-        console.log(`Destination(${target}/AuxFunctions/) is not empty!`);
-      }
-    });
+  lua.clone(`${target}/AuxFunctions/`).catch((err) => {
+    if (err.code === "DEST_NOT_EMPTY") {
+      console.log(`Destination(${target}/AuxFunctions/) is not empty!`);
+    }
+  });
 
   //  Scaffold Auxiliary.lua
   fs.access(`${target}/Auxiliary.lua`, (err) => {
