@@ -2,4 +2,8 @@
 #   GITIGNORE
 #   #########
 
+node_modules/
 *.code-workspace
+
+AuxConfig.json
+Mods/S7_AuxFunctions_1asgasg2-asgas623sd-hsdy362ys/
