@@ -11,6 +11,8 @@ const {
   PromptForMissingProperties,
 } = require("../../utils/auxConfig");
 
+const CreateOsiToolsConfig = require("../../utils/osiToolsConfig");
+
 //  ==========
 //  INITIALIZE
 //  ==========
@@ -20,6 +22,9 @@ async function Init(options) {
   //  INITIALIZE AUXCONFIG
   let AuxConfig = LoadAuxConfig();
   AuxConfig = await PromptForMissingProperties(AuxConfig);
+
+  //  SCAFFOLD PROJECT
+  CreateOsiToolsConfig(AuxConfig);
 
   //  SAVE AUXCONFIG
   fs.writeFileSync(auxConfigPath, JSON.stringify(AuxConfig, null, 2), "utf8");
