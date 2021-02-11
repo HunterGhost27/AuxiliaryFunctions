@@ -9,14 +9,13 @@ const CreateOsiToolsConfig = (AuxConfig) => {
     FeatureFlags: AuxConfig.SEFeatureFlags,
   };
 
+  const target = `./Mods/${AuxConfig.ProjectDirectory}`;
+  fs.mkdirSync(target, { recursive: true });
+
   fs.writeFile(
-    `./Mods/${AuxConfig.ProjectDirectory}/OsiToolsConfig.json`,
+    `${target}/OsiToolsConfig.json`,
     JSON.stringify(osiToolsConfig, null, 2),
-    (err) => {
-      if (err) {
-        console.error(err);
-      }
-    }
+    (err) => err && console.error(err)
   );
 };
 
