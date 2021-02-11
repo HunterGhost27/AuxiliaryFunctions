@@ -15,14 +15,12 @@ const auxConfigPath = "./AuxConfig.json";
 
 //  Loads AuxConfig.json from the Current-Working-Directory
 const LoadAuxConfig = () => {
-  let data = {};
   try {
     fs.accessSync(auxConfigPath); //  Try to access AuxConfig.json
   } catch (err) {
     if (err.errno == -4058) {
       //  File not found or permission error
       fs.writeFileSync(auxConfigPath, "{}"); //  Create file
-      LoadAuxConfig(); //  Restart self
     } else {
       console.error(err); //  Else log error
     }
