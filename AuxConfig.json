@@ -1,0 +1,10 @@
+{
+  "ProjectName": "S7_Config",
+  "ProjectUUID": "asgaskgash",
+  "ScriptExtenderVersion": 52,
+  "SEFeatureFlags": [
+    "OsirisExtensions",
+    "Lua"
+  ],
+  "ProjectDirectory": "S7_Config_asgaskgash"
+}
