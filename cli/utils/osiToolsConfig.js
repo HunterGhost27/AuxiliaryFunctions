@@ -9,13 +9,15 @@ const CreateOsiToolsConfig = (AuxConfig) => {
     FeatureFlags: AuxConfig.SEFeatureFlags,
   };
 
-  const osiToolsPath = `./Mods/${AuxConfig.ProjectDirectory}/OsiToolsConfig.json`;
-
-  fs.writeFile(osiToolsPath, JSON.stringify(osiToolsConfig, null, 2), (err) => {
-    if (err) {
-      console.error(err);
+  fs.writeFile(
+    `./Mods/${AuxConfig.ProjectDirectory}/OsiToolsConfig.json`,
+    JSON.stringify(osiToolsConfig, null, 2),
+    (err) => {
+      if (err) {
+        console.error(err);
+      }
     }
-  });
+  );
 };
 
 module.exports = CreateOsiToolsConfig;
