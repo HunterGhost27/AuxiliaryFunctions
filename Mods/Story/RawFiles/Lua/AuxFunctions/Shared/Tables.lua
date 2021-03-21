@@ -138,7 +138,7 @@ function Map(t, callback, recursive)
     local mapped = {}
     local recursive = recursive or false
 
-    for key, value in pairs(Rematerialize(t)) do
+    for key, value in pairs(t) do
         local newKey, newValue = key, value
         if type(value) == 'table' then newValue = recursive and Map(value, callback, recursive) or value
         else newKey, newValue = callback(key, value, recursive) end
