@@ -115,6 +115,6 @@ function Resolve(value, ...)
     local ret
     if type(value) == 'function' then ret = value(...)
     else ret = value end
-    if not IsValid(ret) then ret = false end
+    if not ret then ret = false end
     return ret
 end
