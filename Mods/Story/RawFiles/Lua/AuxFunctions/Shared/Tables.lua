@@ -195,11 +195,12 @@ function Pinpoint(tar, tbl, curr, addresses)
     local addresses = addresses or {}
     for key, value in pairs(tbl) do
         if type(value) == 'table' then
-            curr = curr .. tostring(key) .. "."
-            point = Pinpoint(tar, value, curr, addresses)
+            local check = curr .. tostring(key) .. "."
+            point = Pinpoint(tar, value, check, addresses)
         elseif tar == value then
             point = curr .. tostring(key)
             table.insert(addresses, point)
+            break
         end
     end
     return point, addresses
