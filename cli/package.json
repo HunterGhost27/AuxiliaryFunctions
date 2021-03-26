@@ -1,7 +1,7 @@
 {
   "name": "@shresht7/aux-functions",
   "version": "1.0.0",
-  "description": "CLI tool for AuxFunctions",
+  "description": "Auxiliary-Functions CLI tool for Divinity Original Sin 2: Definitive Edition mods",
   "main": "./bin/auxFunctions.js",
   "bin": {
     "@shresht7/aux-functions": "./bin/auxFunction.js",
