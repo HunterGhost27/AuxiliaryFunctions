@@ -36,12 +36,20 @@ const LoadAuxConfig = () => {
 //  Prompts user for any missing AuxConfig.json properties
 const PromptForMissingProperties = async (AuxConfig) => {
   let questions = []; //  Array to hold list of inquirer prompts
+  let SCG = {}; //  Source-Control-Generator
+
+  try {
+    SCG = JSON.parse(fs.readFileSync("./SourceControlGenerator.json", "utf-8"));
+  } catch (err) {
+    console.error(err);
+  }
 
   //  PROJECT NAME
   if (!AuxConfig.ProjectName) {
     questions.push({
       type: "input",
       name: "ProjectName",
+      default: SCG.ProjectName,
     });
   }
 
@@ -50,6 +58,7 @@ const PromptForMissingProperties = async (AuxConfig) => {
     questions.push({
       type: "input",
       name: "ProjectUUID",
+      default: SCG.ProjectUUID,
     });
   }
 
