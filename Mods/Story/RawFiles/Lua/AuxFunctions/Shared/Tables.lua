@@ -195,6 +195,7 @@ function Pinpoint(tar, tbl, curr, addresses)
     local addresses = addresses or {}
     for key, value in pairs(tbl) do
         if type(value) == 'table' then
+            if IsValid(point) then break end
             local check = curr .. tostring(key) .. "."
             point = Pinpoint(tar, value, check, addresses)
         elseif tar == value then
