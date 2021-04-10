@@ -19,6 +19,8 @@ jobs:
     
     name: SynLabels
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
       # Execute SynLabels Action
       # ========================
