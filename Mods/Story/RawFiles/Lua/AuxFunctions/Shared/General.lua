@@ -118,3 +118,18 @@ function Resolve(value, ...)
     if not ret then ret = false end
     return ret
 end
+
+-- ==================
+-- CALCULATE DISTANCE
+-- ==================
+
+---Calculates distance between two objects
+---@param sourcePos number[]
+---@param targetPos number[]
+---@return number
+function CalculateDistance(sourcePos, targetPos)
+    if not sourcePos or not targetPos then return 0 end
+    local x2, y2, z2 = table.unpack(sourcePos)
+    local x1, y1, z1 = table.unpack(targetPos)
+    return math.floor(math.sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2))
+end
