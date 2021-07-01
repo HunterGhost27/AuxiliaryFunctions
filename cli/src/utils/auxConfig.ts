@@ -1,54 +1,54 @@
-//  ==========
-//  AUX CONFIG
-//  ==========
+//  Library
+import fs from 'fs'
+import inquirer from 'inquirer'
 
-const fs = require("fs"); //  File-System Module
-const inquirer = require("inquirer"); //  Inquire about AuxConfig Properties
+//  Type Definitions
+import type { AuxConfig } from './typeDefinitions'
 
-//  --------------  PATH  ---------------
-const auxConfigPath = "./AuxConfig.json";
-//  -------------------------------------
+//  -------------------------------------------
+export const auxConfigPath = './AuxConfig.json'
+//  -------------------------------------------
 
 //  ==========================
 //  AUX-CONFIG FILE-MANAGEMENT
 //  ==========================
 
 //  Loads AuxConfig.json from the Current-Working-Directory
-const LoadAuxConfig = () => {
+export const LoadAuxConfig = (): AuxConfig | {} => {
   try {
-    fs.accessSync(auxConfigPath); //  Try to access AuxConfig.json
+    fs.accessSync(auxConfigPath) //  Try to access AuxConfig.json
   } catch (err) {
     if (err.errno == -4058) {
       //  File not found or permission error
-      fs.writeFileSync(auxConfigPath, "{}"); //  Create file
+      fs.writeFileSync(auxConfigPath, '{}') //  Create file
     } else {
-      console.error(err); //  Else log error
+      console.error(err) //  Else log error
     }
   }
 
-  return JSON.parse(fs.readFileSync(auxConfigPath, "utf-8")); //  Parse AuxConfig.json
-};
+  return JSON.parse(fs.readFileSync(auxConfigPath, 'utf-8')) //  Parse AuxConfig.json
+}
 
 //  ===================================
 //  INQUIRE ABOUT AUX-CONFIG PROPERTIES
 //  ===================================
 
 //  Prompts user for any missing AuxConfig.json properties
-const PromptForMissingProperties = async (AuxConfig) => {
-  let questions = []; //  Array to hold list of inquirer prompts
-  let SCG = {}; //  Source-Control-Generator
+export const PromptForMissingProperties = async (AuxConfig: Partial<AuxConfig>) => {
+  let questions = [] //  Array to hold list of inquirer prompts
+  let SCG = {} as AuxConfig //  Source-Control-Generator
 
   try {
-    SCG = JSON.parse(fs.readFileSync("./SourceControlGenerator.json", "utf-8"));
+    SCG = JSON.parse(fs.readFileSync('./SourceControlGenerator.json', 'utf-8'))
   } catch (err) {
-    console.error(err);
+    console.error(err)
   }
 
   //  PROJECT NAME
   if (!AuxConfig.ProjectName) {
     questions.push({
-      type: "input",
-      name: "ProjectName",
+      type: 'input',
+      name: 'ProjectName',
       default: SCG.ProjectName,
     });
   }
@@ -56,8 +56,8 @@ const PromptForMissingProperties = async (AuxConfig) => {
   //  PROJECT UUID
   if (!AuxConfig.ProjectUUID) {
     questions.push({
-      type: "input",
-      name: "ProjectUUID",
+      type: 'input',
+      name: 'ProjectUUID',
       default: SCG.ProjectUUID,
     });
   }
@@ -65,8 +65,8 @@ const PromptForMissingProperties = async (AuxConfig) => {
   //  SCRIPT-EXTENDER VERSION
   if (!AuxConfig.ScriptExtenderVersion) {
     questions.push({
-      type: "number",
-      name: "ScriptExtenderVersion",
+      type: 'number',
+      name: 'ScriptExtenderVersion',
       default: 52,
     });
   }
@@ -74,8 +74,8 @@ const PromptForMissingProperties = async (AuxConfig) => {
   //  SCRIPT-EXTENDER FEATURE FLAGS
   if (!AuxConfig.SEFeatureFlags) {
     questions.push({
-      type: "checkbox",
-      name: "SEFeatureFlags",
+      type: 'checkbox',
+      name: 'SEFeatureFlags',
       choices: [
         "OsirisExtensions",
         "Lua",
@@ -91,7 +91,7 @@ const PromptForMissingProperties = async (AuxConfig) => {
   await inquirer
     .prompt(questions) //  Prompt for Questions
     .then((value) => (AuxConfig = { ...AuxConfig, ...value })) // Update AuxConfig
-    .catch((err) => console.error(err));
+    .catch((err) => console.error(err))
 
   //  PROJECT DIRECTORY
   if (!AuxConfig.ProjectDirectory) {
@@ -105,14 +105,5 @@ const PromptForMissingProperties = async (AuxConfig) => {
       .catch((err) => console.error(err));
   }
 
-  return AuxConfig;
-};
-
-//  === EXPORTS ===
-//  ===============
-
-module.exports = {
-  auxConfigPath,
-  LoadAuxConfig,
-  PromptForMissingProperties,
-};
+  return AuxConfig as AuxConfig
+}
