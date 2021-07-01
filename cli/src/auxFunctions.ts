@@ -16,15 +16,15 @@ program.name('AuxFunctions').version(version)
 //  COMMANDS
 //  ========
 
-import Init from './commands/auxFunctions-Init'
+import init from './commands/init'
 
 //  AUXFUNCTION INIT
 //  ================
 
 program
-  .command('Init')
+  .command('init')
   .description("Initialize AuxFunctions")
   .option('-r, --reinit', "Reinitialize AuxConfig")
-  .action((options: AuxOptions) => Init(options))
+  .action((options: AuxOptions) => init(options))
 
 program.parse()
