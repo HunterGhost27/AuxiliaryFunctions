@@ -38,6 +38,19 @@ function ExtractGUID(str)
 end
 
 --  ======
+--  INDENT
+--  ======
+
+---Indent the string by the given level
+---@param level number Level of indentation (default: 1)
+---@param str string
+---@return string
+function Indent(level, str)
+    str = str or ''
+    return string.rep('\t', level or 1) .. str
+end
+
+--  ======
 --  WRITER
 --  ======
 
