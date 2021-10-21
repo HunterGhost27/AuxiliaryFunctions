@@ -4,7 +4,7 @@
 
 ---
 
-A repository of `Lua` scripts that provide auxiliary functions for my **DOS2:DE mods**.
+A repository of `Lua` utilities that provide auxiliary functions for **DOS2:DE mods**.
 
 ### Requirements
 
