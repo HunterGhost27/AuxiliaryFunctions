@@ -29,7 +29,7 @@ function Disintegrate(element, separator)
     local separator = ValidString(separator) and separator or " "
     if type(element) == 'table' then pieces = element end
     if type(element) == 'string' then for split in string.gmatch(element, "[^" .. separator .. "]+") do pieces[#pieces + 1] = split end end
-    if type(element) == 'number' then pieces = Map(table.pack(math.modf(element)), function (key, value) return key, tonumber(tostring(value):sub(0, 4)) end)
+    if type(element) == 'number' then pieces = Map(table.pack(math.modf(element)), function (key, value) return key, tonumber(tostring(value):sub(0, 16)) end)
     end
     return table.unpack(pieces)
 end

@@ -1,18 +1,13 @@
---  ============
---  UNIT TESTING
---  ============
+--  ==========
+--  UNIT TESTS
+--  ==========
 
---  CLEAR TEST RESULTS
---  ==================
+Lust = require('Mods.Story.RawFiles.Lua.AuxFunctions.Tests.library.Lust')  --  Lust Testing Framework
 
-ClearTestResults()
+require('Mods.Story.RawFiles.Lua.AuxFunctions.Tests.library.OsiToolsShims')  -- Shims for OsiTools
 
---  PERFORM TESTS
---  =============
+--  =======
+--  MODULES
+--  =======
 
-Ext.Require('AuxFunctions/Tests/General_tests.lua')
-
---  PRINT TEST RESULTS
---  ==================
-
-ShowTestResults()
+require('Mods.Story.RawFiles.Lua.AuxFunctions.Tests.Shared.General')
